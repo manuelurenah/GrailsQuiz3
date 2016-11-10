@@ -29,9 +29,30 @@
                 <fieldset class="form">
                     <f:all bean="evento"/>
                 </fieldset>
+                <fieldset>
+                    <table>
+                        <thead>
+                            <th>Nombre</th>
+                            <th>Asistencia al evento</th>
+                        </thead>
+                        <tbody>
+                        <g:each in="${usuarios}" var="u">
+                            <tr>
+                                <td>
+                                    ${u.nombre} ${u.apellido}
+                                </td>
+                                <td>
+                                    <input type="checkbox" value="${u.id}" name="asistencia[]" id="asistencia">
+                                </td>
+                            </tr>
+                        </g:each>
+                        </tbody>
+                    </table>
+                </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
+
             </g:form>
         </div>
     </body>

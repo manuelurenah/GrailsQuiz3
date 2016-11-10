@@ -31,6 +31,27 @@
                 <fieldset class="form">
                     <f:all bean="evento"/>
                 </fieldset>
+                <fieldset>
+                    <table>
+                        <thead>
+                        <th>Nombre</th>
+                        <th>Asistencia al evento</th>
+                        </thead>
+                        <tbody>
+                        <g:each in="${usuarios}" var="u">
+                            <tr>
+                                <td>
+                                    ${u.nombre} ${u.apellido}
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="asistencia[]" value="${u.id}"
+                                        <g:if test="${evento.usuarios.contains(u)}"> checked </g:if> id="asistencia">
+                                </td>
+                            </tr>
+                        </g:each>
+                        </tbody>
+                    </table>
+                </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>

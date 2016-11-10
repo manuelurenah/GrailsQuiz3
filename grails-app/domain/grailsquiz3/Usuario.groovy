@@ -13,4 +13,9 @@ class Usuario {
         apellido blank: false
         email email: true
     }
+
+    @Override
+    String toString() {
+        return nombre + ' ' + apellido;
+    }
 }

@@ -18,7 +18,7 @@ class EventoController {
     }
 
     def create() {
-        respond new Evento(params)
+        respond new Evento(params), model:[usuarios: Usuario.findAll()]
     }
 
     @Transactional
@@ -27,6 +27,14 @@ class EventoController {
             transactionStatus.setRollbackOnly()
             notFound()
             return
+        }
+
+        def usuarios = params['asistencia[]'];
+
+        evento.usuarios = new HashSet<>();
+        for(u in usuarios) {
+            def usuario = Usuario.findById(u);
+            evento.usuarios.add(usuario);
         }
 
         if (evento.hasErrors()) {
@@ -47,7 +55,7 @@ class EventoController {
     }
 
     def edit(Evento evento) {
-        respond evento
+        respond evento, model:[usuarios: Usuario.findAll()]
     }
 
     @Transactional
@@ -55,6 +63,19 @@ class EventoController {
         if (evento == null) {
             transactionStatus.setRollbackOnly()
             notFound()
+            return
+        }
+
+        def usuarios = params['asistencia[]'];
+        evento.usuarios = new HashSet<>();
+        for(u in usuarios) {
+            def usuario = Usuario.findById(u);
+            evento.usuarios.add(usuario);
+        }
+
+        if (evento.hasErrors()) {
+            transactionStatus.setRollbackOnly()
+            respond evento.errors, view:'create'
             return
         }
 
