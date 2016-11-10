@@ -53,13 +53,12 @@
 
     <div id="content" role="main">
         <section class="row colset-2-its">
-            <h1>Welcome to Grails</h1>
+            <h1>Quiz #3</h1>
 
             <p>
-                Congratulations, you have successfully started your first Grails application! At the moment
-                this is the default page, feel free to modify it to either redirect to a controller or display
-                whatever content you may choose. Below is a list of controllers that are currently deployed in
-                this application, click on each to execute its default action:
+                Luis E. Rojas C. - 20120178 <br>
+                Manuel E. Urena H. - 20120596 <br>
+                Edward Romero E. - 20120660
             </p>
 
             <div id="controllers" role="navigation">
